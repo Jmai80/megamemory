@@ -1,0 +1,20 @@
+{
+  "name": "megamemory",
+  "description": "MegaMemory – ett färgglatt memory-spel med emojis för barn, byggt med Phaser 4 och Vite.",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --config vite/config.dev.mjs",
+    "build": "vite build --config vite/config.prod.mjs",
+    "preview": "vite preview --config vite/config.prod.mjs"
+  },
+  "devDependencies": {
+    "terser": "^5.39.0",
+    "vite": "^6.3.1"
+  },
+  "dependencies": {
+    "phaser": "4.0.0"
+  }
+}

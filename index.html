@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#2b1d5c" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+    <title>MegaMemory</title>
+</head>
+
+<body>
+    <div id="game-container"></div>
+
+    <!-- Allt nedan är HTML-gränssnitt som ligger ovanpå Phaser-canvasen -->
+    <div id="ui">
+
+        <!-- ===================== MENY ===================== -->
+        <section id="menu" class="screen" hidden>
+            <h1 class="logo" aria-label="MegaMemory"></h1>
+            <p class="tagline">Vänd brickorna och hitta alla par! 🎉</p>
+
+            <div class="levels">
+                <button class="level" data-level="easy" style="--c:#38b6ff; --c2:#1c7ed6">
+                    <span class="lv-emoji">🐣</span>
+                    <span class="lv-name">Lätt</span>
+                    <span class="lv-count">24 brickor</span>
+                    <span class="lv-best"></span>
+                    <span class="lv-play">Spela!</span>
+                </button>
+
+                <button class="level" data-level="medium" style="--c:#ff9f43; --c2:#e8590c">
+                    <span class="lv-emoji">🦊</span>
+                    <span class="lv-name">Mellan</span>
+                    <span class="lv-count">36 brickor</span>
+                    <span class="lv-best"></span>
+                    <span class="lv-play">Spela!</span>
+                </button>
+
+                <div class="level" data-level="hard" style="--c:#b07cff; --c2:#7048e8">
+                    <span class="lv-emoji">🐉</span>
+                    <span class="lv-name">Svår</span>
+                    <div class="stepper">
+                        <button class="step" data-step="-2" aria-label="Färre brickor">−</button>
+                        <span class="lv-count"><b id="hard-count">48</b> brickor</span>
+                        <button class="step" data-step="2" aria-label="Fler brickor">+</button>
+                    </div>
+                    <input id="hard-range" type="range" min="6" max="100" step="2" value="48" aria-label="Antal brickor">
+                    <span class="lv-best"></span>
+                    <button class="lv-play" id="hard-play">Spela!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SPEL-HUD ===================== -->
+        <header id="hud" hidden>
+            <button class="pill btn" id="hud-back">← Meny</button>
+            <div class="stats">
+                <span class="pill" title="Par"><span>✅</span> <b id="hud-pairs">0/0</b></span>
+                <span class="pill" title="Drag"><span>👆</span> <b id="hud-moves">0</b></span>
+                <span class="pill" title="Tid"><span>⏱️</span> <b id="hud-time">0:00</b></span>
+            </div>
+        </header>
+
+        <!-- ===================== VINST ===================== -->
+        <div id="win" class="overlay" hidden>
+            <div class="panel">
+                <div class="win-title">Du klarade det!</div>
+                <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span></div>
+                <div class="win-stats">
+                    <div><small>Tid</small><b id="win-time">0:00</b></div>
+                    <div><small>Drag</small><b id="win-moves">0</b></div>
+                </div>
+                <div class="record" id="win-record" hidden>🏆 Nytt rekord!</div>
+                <div class="win-buttons">
+                    <button class="big btn green" id="win-again">🔄 Spela igen</button>
+                    <button class="big btn blue" id="win-menu">🏠 Meny</button>
+                </div>
+            </div>
+        </div>
+
+        <button id="mute" class="pill btn round" aria-label="Ljud av/på" hidden>🔊</button>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
